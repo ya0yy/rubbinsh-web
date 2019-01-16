@@ -5,32 +5,37 @@ import axios from 'axios/dist/axios'
 import qs from 'qs'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
-import index from './view/index.vue';
+import 'animate.css/animate.css'
+import main from './view/main.vue';
 
 // 注册自定义全局组件
-Vue.prototype.axios = axios;
+// Vue.prototype.axios = axios;
 Vue.prototype.qs = qs;
 
 // 页面懒加载导入
-// const successVue = () => import('./view/success.vue');
+const test = () => import('./view/test.vue');
+const index = () => import('./view/index.vue');
 
 // 注册组件
-Vue.use(VueRouter);
 Vue.use(ElementUI);
+Vue.use(VueRouter);
 
 // 路由规则定义
-/*const router = new VueRouter({
+const router = new VueRouter({
     routes: [
-        {path: "/success", component: successVue}
+        {path: "/test", component: test},
+        {path: "/index", component: index},
+        {path: '/', redirect: '/index'},
     ]
-});*/
+});
 
 new Vue({
     el: "#app",
     created() {
         console.log("hello");
     },
-    render: h => h(index)
+    render: h => h(main),
+    router
 });
 
 // 时间格式过滤器

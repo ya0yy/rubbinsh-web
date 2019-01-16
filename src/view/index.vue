@@ -1,68 +1,73 @@
 <template>
-    <div id="app">
-        <el-container>
-            <el-header>
-                <el-menu
-                        :default-active="activeIndex2"
-                        class="el-menu-demo"
-                        mode="horizontal"
-                        @select="handleSelect"
-                        background-color="#354259"
-                        text-color="white"
-                        active-text-color="#ffd04b">
-                    <el-menu-item index="1">首页</el-menu-item>
-                    <el-submenu index="2">
-                        <template slot="title">我的工作台</template>
-                        <el-menu-item index="2-1">选项1</el-menu-item>
-                        <el-menu-item index="2-2">选项2</el-menu-item>
-                        <el-menu-item index="2-3">选项3</el-menu-item>
-                        <el-submenu index="2-4">
-                            <template slot="title">选项4</template>
-                            <el-menu-item index="2-4-1">选项1</el-menu-item>
-                            <el-menu-item index="2-4-2">选项2</el-menu-item>
-                            <el-menu-item index="2-4-3">选项3</el-menu-item>
-                        </el-submenu>
-                    </el-submenu>
-                    <el-menu-item index="3" disabled>消息中心</el-menu-item>
-                    <el-menu-item index="4"><a href="https://www.ele.me" target="_blank">订单管理</a></el-menu-item>
-                </el-menu>
-            </el-header>
-            <el-main>
-                <el-carousel :interval="4000" type="card" height="200px">
-                    <el-carousel-item v-for="item in 6" :key="item">
-                        <h3>{{ item }}</h3>
-                    </el-carousel-item>
-                </el-carousel>
-            </el-main>
-            <el-footer>Footer</el-footer>
-        </el-container>
-    </div>
+    <el-row :gutter="20">
+
+        <el-col :span="6" offset="3">
+            <div class="grid-content bg-purple">
+                <div style="width: 100%; ">
+                    <div style="width: 400px; margin:50px auto 0px auto; ">
+                        <el-carousel :interval="4000" height="300px">
+                            <el-carousel-item v-for="item in 5" :key="item">
+                                <img src="../img/test.jpg" alt="实例图片" width="400">
+                            </el-carousel-item>
+                        </el-carousel>
+                    </div>
+                </div>
+            </div>
+        </el-col>
+        <el-col :span="12">
+            <div class="grid-content bg-purple">
+                <div style="width: 100%; ">
+                    <div style="width: 400px; margin:50px auto 0px auto; ">
+
+                    </div>
+                </div>
+            </div>
+        </el-col>
+    </el-row>
 </template>
 <script>
     export default {
         created() {
-        },
-        data: () => {
 
+        },
+        data() {
+            return {}
         }
     }
 </script>
 <style scoped>
-    .el-header, .el-footer {
-        text-align: center;
-        line-height: 60px;
+    .el-row {
+        margin-bottom: 20px;
+
+    &
+    :last-child {
+        margin-bottom: 0;
     }
 
-    .el-main {
-        background-color: #E9EEF3;
-        color: #333;
-        text-align: center;
-        line-height: 160px;
+    }
+    .el-col {
+        border-radius: 4px;
     }
 
-    #app {
-        background: url(../img/index_bg.png) no-repeat;
-        background-color: #354259;
-        height: 1202px;
+    .bg-purple-dark {
+        background: #99a9bf;
+    }
+
+    .bg-purple {
+        background: #d3dce6;
+    }
+
+    .bg-purple-light {
+        background: #e5e9f2;
+    }
+
+    .grid-content {
+        border-radius: 4px;
+        min-height: 36px;
+    }
+
+    .row-bg {
+        padding: 10px 0;
+        background-color: #f9fafc;
     }
 </style>
