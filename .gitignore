@@ -61,4 +61,5 @@ typings/
 .next
 
 #自定义
-.idea/**
+.idea
+dist
