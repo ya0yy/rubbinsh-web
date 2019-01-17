@@ -1,8 +1,8 @@
 const path = require('path')
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-    devtool: 'eval-source-map',
     entry: {
         index: './src/index.js'
     },
@@ -24,20 +24,14 @@ module.exports = {
             {
                 test: /\.html$/,
                 use: [
-                    {//对html动态取名
-                        loader: 'file-loader',
-                        options: {
-                            name: "[name].html"
-                        }
-                    },
-                    {//让html和bundle.js进行区分,因为之前加载css,js的时候都会融入到出口的bundle里面去,
-                        loader: "extract-loader"
-                    },
-                    {
-                        loader: "html-loader"
-                    }
-                ]
+                    //对html动态取名
+                    {loader: 'file-loader', options: {name: "[name].html"}},
 
+                    //让html和bundle.js进行区分,因为之前加载css,js的时候都会融入到出口的bundle里面去,
+                    {loader: "extract-loader"},
+                    {loader: "html-loader"}
+                ],
+                exclude: path.resolve(__dirname, './src/index.html')
             },
             {
                 test: /\.(eot|woff2|woff|ttf|svg)/,
@@ -54,12 +48,17 @@ module.exports = {
                     }
                 ]
             },
-            {test: /\.(png|jpg)$/, use: 'url-loader?limit=8192'},
+            {test: /\.(png|jpg|ico)$/, use: 'url-loader?limit=8192'},
         ]
     },
     plugins: [
         // make sure to include the plugin for the magic
-        new VueLoaderPlugin()
+        new VueLoaderPlugin(),
+        new HtmlWebpackPlugin({
+            chunks:['index'],
+            filename:'index.html',
+            template:'./src/index.html',
+            favicon:'./src/img/favicon.ico'
+        })
     ]
-
 }
