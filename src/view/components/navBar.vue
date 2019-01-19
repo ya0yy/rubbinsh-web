@@ -10,7 +10,7 @@
          @mouseleave.native：移除也换个颜色
          -->
         <el-menu
-                :mode="cliWidth > 768 ? 'horizontal' : 'vertical'"
+                :mode="$store.state.cliWidth > 768 ? 'horizontal' : 'vertical'"
                 :default-active="activeIndex2"
                 class="el-menu-demo"
                 :background-color="embg ? 'black' : '#dabcbf'"
@@ -21,7 +21,7 @@
                 @mouseleave.native="embg=!embg"
         >
             <!-- 当浏览器宽度大于768时显示pc端导航栏 -->
-            <template v-if="cliWidth > 768">
+            <template v-if="$store.state.cliWidth > 768">
                 <el-menu-item index="/" v-navBarCss="el">首页</el-menu-item>
                 <el-menu-item index="test" disabled>消息中心</el-menu-item>
                 <el-menu-item index="test">test</el-menu-item>
@@ -32,7 +32,7 @@
             </template>
 
             <!-- 当浏览器宽度小于768时显示适配于移动端的导航栏 -->
-            <el-submenu index="2" v-if="cliWidth < 768">
+            <el-submenu index="2" v-if="$store.state.cliWidth < 768">
                 <template slot="title">我的工作台</template>
                 <el-menu-item index="/">首页</el-menu-item>
                 <el-menu-item index="test" disabled>消息中心</el-menu-item>
@@ -49,21 +49,10 @@
     import login from './login.vue'
 
     export default {
-        mounted() {
-            // 监听浏览器大小变化，将宽度实时赋值给vm的cliWidth
-            window.onresize = () => {
-                return (() => {
-                    this.cliWidth = document.body.clientWidth
-                })()
-            }
-        },
         data() {
             return {
                 // 导航栏的初始颜色
                 embg: false,
-                // 当前浏览器客户端的屏幕宽度
-                cliWidth: document.body.clientWidth,
-                // 登录框是否显示
                 loginVisible: false
             }
         },

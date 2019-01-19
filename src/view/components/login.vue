@@ -21,7 +21,6 @@
 <script>
     export default {
         mounted() {
-            document.getElementsByTagName('input')[1].style.width = '75%'
         },
         data() {
             return {}
@@ -42,7 +41,7 @@
         opacity: .85;
     }
 
-    /* 登录框圆角 */
+     /* 登录框圆角 */
     .el-header > div > .el-dialog__wrapper > .el-dialog {
         border-radius: 13px;
     }
@@ -52,5 +51,10 @@
         width: 75%;
         border-radius: 10px;
         height: 50px;
+    }
+
+    /* 隐藏关闭按钮 */
+    .el-dialog__close {
+        display: none;
     }
 </style>

@@ -6,6 +6,7 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import 'animate.css/animate.css'
 import main from './view/main.vue';
+import Vuex from 'vuex/dist/vuex'
 
 // 注册自定义全局组件
 Vue.prototype.$axios = axios;
@@ -18,6 +19,7 @@ const index = () => import('./view/index.vue');
 // 注册组件
 Vue.use(ElementUI);
 Vue.use(VueRouter);
+Vue.use(Vuex);
 
 // 路由规则定义
 const router = new VueRouter({
@@ -28,13 +30,36 @@ const router = new VueRouter({
     ]
 });
 
+// vuex
+const store = new Vuex.Store({
+    state: {
+        count: 0,
+        // 浏览器宽度
+        cliWidth: document.body.clientWidth
+    },
+    mutations: {
+        increment (state) {
+            state.count++
+        }
+    }
+})
+
 new Vue({
     el: "#app",
+    mounted() {
+        // 监听浏览器大小变化，将宽度实时赋值给vuex的cliWidth
+        window.onresize = () => {
+            return (() => {
+                this.$store.state.cliWidth = document.body.clientWidth
+            })()
+        }
+    },
     created() {
         console.log("hello");
     },
     render: h => h(main),
-    router
+    router,
+    store
 });
 
 // 时间格式过滤器
