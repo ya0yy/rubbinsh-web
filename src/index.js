@@ -1,4 +1,3 @@
-import 'bootstrap/dist/css/bootstrap.min.css'
 import Vue from 'vue/dist/vue.min'
 import VueRouter from 'vue-router'
 import axios from 'axios/dist/axios'
@@ -9,11 +8,11 @@ import 'animate.css/animate.css'
 import main from './view/main.vue';
 
 // 注册自定义全局组件
-// Vue.prototype.axios = axios;
-Vue.prototype.qs = qs;
+Vue.prototype.$axios = axios;
+Vue.prototype.$qs = qs;
 
 // 页面懒加载导入
-const test = () => import('./view/test.vue');
+const test = () => import('./view/router/test.vue');
 const index = () => import('./view/index.vue');
 
 // 注册组件
