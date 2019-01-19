@@ -2,16 +2,16 @@
 <template>
     <div><!-- 第一行  gutter：每列的间隔 -->
         <el-row :gutter="20">
-            <el-col :md="{span: 6, offset: 4}" :sm="{span: 24, offset: 0}">
+            <el-col :xl="{span: 6, offset: 4}" :lg="{span: 11, offset: 0}" :sm="{span: 24, offset: 0}">
                 <carousel></carousel>
             </el-col>
-            <el-col :md="10" :sm="{span: 24}">
+            <el-col :xl="10" :lg="13" :sm="{span: 24}">
                 <hotPost></hotPost>
             </el-col>
         </el-row>
         <!-- 第二行 -->
         <el-row>
-            <el-col :md="{span: 16, offset: 4}" :sm="{span: 24, offset: 0}">
+            <el-col :xl="{span: 16, offset: 4}" :sm="{span: 24, offset: 0}">
                 <div class="grid-content bg-purple-dark"></div>
             </el-col>
         </el-row>

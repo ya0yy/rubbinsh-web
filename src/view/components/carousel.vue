@@ -21,6 +21,7 @@
 </script>
 
 <style scoped>
+    /* 图片圆角 */
     .el-carousel__item {
         border-radius: 10px;
     }

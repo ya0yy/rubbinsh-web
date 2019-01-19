@@ -10,7 +10,7 @@
          @mouseleave.native：移除也换个颜色
          -->
         <el-menu
-                :mode="$store.state.cliWidth > 768 ? 'horizontal' : 'vertical'"
+                :mode="$store.state.cliWidth >= 768 ? 'horizontal' : 'vertical'"
                 :default-active="activeIndex2"
                 class="el-menu-demo"
                 :background-color="embg ? 'black' : '#dabcbf'"
@@ -32,11 +32,12 @@
             </template>
 
             <!-- 当浏览器宽度小于768时显示适配于移动端的导航栏 -->
-            <el-submenu index="2" v-if="$store.state.cliWidth < 768">
+            <el-submenu index="2" v-if="$store.state.cliWidth <= 768">
                 <template slot="title">我的工作台</template>
                 <el-menu-item index="/">首页</el-menu-item>
                 <el-menu-item index="test" disabled>消息中心</el-menu-item>
                 <el-menu-item index="test">test</el-menu-item>
+                <li class="el-menu-item" @click="loginVisible = !loginVisible">登录</li>
             </el-submenu>
 
         </el-menu>
