@@ -24,7 +24,7 @@
             <template v-if="$store.state.cliWidth > 768">
                 <el-menu-item index="/" v-navBarCss="el">首页</el-menu-item>
                 <el-menu-item index="test" disabled>消息中心</el-menu-item>
-                <el-menu-item index="test">test</el-menu-item>
+                <el-menu-item index="user">个人中心</el-menu-item>
                 <li class="login">
                     <el-button type="success">注册</el-button>
                     <el-button type="primary" @click="loginVisible = !loginVisible">登录</el-button>
@@ -36,13 +36,14 @@
                 <template slot="title">我的工作台</template>
                 <el-menu-item index="/">首页</el-menu-item>
                 <el-menu-item index="test" disabled>消息中心</el-menu-item>
-                <el-menu-item index="test">test</el-menu-item>
+                <el-menu-item index="user">个人中心</el-menu-item>
                 <li class="el-menu-item" @click="loginVisible = !loginVisible">登录</li>
             </el-submenu>
 
         </el-menu>
         <login :loginVisible="loginVisible" @showLogin="loginVisible = !loginVisible"></login>
     </div>
+
 </template>
 
 <script>

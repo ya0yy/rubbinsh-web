@@ -1,16 +1,16 @@
 <template>
     <el-dialog
-            title="登录"
             :visible="loginVisible"
             width="30%"
             :before-close="handleClose"
             :fullscreen="$store.state.cliWidth <= 768"
     >
         <span>
+            <img src="../../img/logo.png" alt="" width="50" style="margin-bottom: 50px" v-if="$store.state.cliWidth > 768">
+            <img src="../../img/backgroud1-2.gif" alt="" width="300">
             <el-input v-model="input" placeholder="用户名 邮箱 手机号" minlength="3" autofocus="true"></el-input>
             <span style="height: 20px; display: block"></span>
             <el-input v-model="input" placeholder="请输入密码" type="password" minlength="3"></el-input>
-
         </span>
         <span slot="footer" class="dialog-footer" style="width: 100%">
             <el-button @click="showLogin" class="quxiao" round>取 消</el-button>
@@ -73,5 +73,10 @@
     /* 登录框标题 */
     .el-dialog__title {
         font-size: 50px;
+    }
+
+    /* 去掉登录框的head，不然上面会显得很长 */
+    .el-dialog__header {
+        display: none;
     }
 </style>

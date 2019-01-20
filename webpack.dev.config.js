@@ -49,7 +49,7 @@ module.exports = {
                     }
                 ]
             },
-            {test: /\.(png|jpg|ico)$/, use: 'url-loader?limit=8192'},
+            {test: /\.(png|jpg|ico|gif)$/, use: 'url-loader?limit=8192'},
         ]
     },
     plugins: [
