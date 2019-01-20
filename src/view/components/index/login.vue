@@ -6,8 +6,8 @@
             :fullscreen="$store.state.cliWidth <= 768"
     >
         <span>
-            <img src="../../img/logo.png" alt="" width="50" style="margin-bottom: 50px" v-if="$store.state.cliWidth > 768">
-            <img src="../../img/backgroud1-2.gif" alt="" width="300">
+            <img src="../../../img/logo.png" alt="" width="50" style="margin-bottom: 50px" v-if="$store.state.cliWidth > 768">
+            <img src="../../../img/backgroud1-2.gif" alt="" width="300">
             <el-input v-model="input" placeholder="用户名 邮箱 手机号" minlength="3" autofocus="true"></el-input>
             <span style="height: 20px; display: block"></span>
             <el-input v-model="input" placeholder="请输入密码" type="password" minlength="3"></el-input>

@@ -20,8 +20,8 @@
 
 <script>
     // 页面模块引入
-    import hotPost from './components/hotPost.vue'
-    import carousel from './components/carousel.vue'
+    import hotPost from './components/index/hotPost.vue'
+    import carousel from './components/index/carousel.vue'
 
     export default {
         created() {
@@ -48,15 +48,6 @@
     .el-col {
         margin-top: 20px;
         /*border-radius: 10px;*/
-    }
-
-    .bg-purple-dark {
-        background: #99a9bf;
-    }
-
-    .grid-content {
-        border-radius: 10px;
-        min-height: 36px;
     }
 
 </style>

@@ -24,7 +24,7 @@
 </template>
 
 <script>
-    import navBar from './components/navBar.vue'
+    import navBar from './components/index/navBar.vue'
     export default {
         created() {
         },

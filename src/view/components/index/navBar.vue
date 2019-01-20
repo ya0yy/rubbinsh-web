@@ -22,9 +22,8 @@
         >
             <!-- 当浏览器宽度大于768时显示pc端导航栏 -->
             <template v-if="$store.state.cliWidth > 768">
-                <el-menu-item index="/" v-navBarCss="el">首页</el-menu-item>
-                <el-menu-item index="test" disabled>消息中心</el-menu-item>
-                <el-menu-item index="user">个人中心</el-menu-item>
+                <el-menu-item index="/" v-navBarCss>首页</el-menu-item>
+                <el-menu-item v-for="item in navBar_menu" :index="item.index">{{item.name}}</el-menu-item>
                 <li class="login">
                     <el-button type="success">注册</el-button>
                     <el-button type="primary" @click="loginVisible = !loginVisible">登录</el-button>
@@ -35,8 +34,7 @@
             <el-submenu index="2" v-if="$store.state.cliWidth <= 768">
                 <template slot="title">我的工作台</template>
                 <el-menu-item index="/">首页</el-menu-item>
-                <el-menu-item index="test" disabled>消息中心</el-menu-item>
-                <el-menu-item index="user">个人中心</el-menu-item>
+                <el-menu-item v-for="item in navBar_menu" index="item.index">{{item.name}}</el-menu-item>
                 <li class="el-menu-item" @click="loginVisible = !loginVisible">登录</li>
             </el-submenu>
 
@@ -53,6 +51,11 @@
     export default {
         data() {
             return {
+                // 导航菜单
+                navBar_menu: [
+                    {index: {name: 'test'}, name: "消息中心"},
+                    {index: {name: 'user'}, name: "个人中心"},
+                ],
                 // 导航栏的初始颜色
                 embg: false,
                 loginVisible: false
