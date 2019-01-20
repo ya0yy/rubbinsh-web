@@ -48,7 +48,7 @@ module.exports = {
                     }
                 ]
             },
-            {test: /\.(png|jpg|ico)$/, use: 'url-loader?limit=8192'},
+            {test: /\.(png|jpg|ico|gif)$/, use: 'url-loader?limit=8192'},
         ]
     },
     plugins: [
@@ -58,7 +58,8 @@ module.exports = {
             chunks:['index'],
             filename:'index.html',
             template:'./src/index.html',
-            favicon:'./src/img/favicon.ico'
+            favicon:'./src/img/favicon.ico',
+            inject: true
         })
     ]
 }
