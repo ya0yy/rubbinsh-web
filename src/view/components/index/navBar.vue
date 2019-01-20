@@ -34,7 +34,7 @@
             <el-submenu index="2" v-if="$store.state.cliWidth <= 768">
                 <template slot="title">我的工作台</template>
                 <el-menu-item index="/">首页</el-menu-item>
-                <el-menu-item v-for="item in navBar_menu" index="item.index">{{item.name}}</el-menu-item>
+                <el-menu-item v-for="item in navBar_menu" :index="item.index">{{item.name}}</el-menu-item>
                 <li class="el-menu-item" @click="loginVisible = !loginVisible">登录</li>
             </el-submenu>
 
