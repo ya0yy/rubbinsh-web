@@ -11,7 +11,7 @@
                             router="true"
                     >
                         <el-menu-item v-for="item in user_menu" :index="item.index">
-                            <i :class="'icon iconfont ' + item.icon"></i>
+                            <i :class="'icon iconfont' + item.icon"></i>
                             <span>{{item.name}}</span>
                         </el-menu-item>
                     </el-menu>

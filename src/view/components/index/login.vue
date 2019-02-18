@@ -6,7 +6,8 @@
             :fullscreen="$store.state.cliWidth <= 768"
     >
         <span>
-            <img src="../../../img/logo.png" alt="" width="50" style="margin-bottom: 50px" v-if="$store.state.cliWidth > 768">
+            <img src="../../../img/logo.png" alt="" width="50" style="margin-bottom: 50px"
+                 v-if="$store.state.cliWidth > 768">
             <img src="../../../img/backgroud1-2.gif" alt="" width="300">
             <el-input v-model="input" placeholder="用户名 邮箱 手机号" minlength="3" autofocus="true"></el-input>
             <span style="height: 20px; display: block"></span>
@@ -15,6 +16,10 @@
         <span slot="footer" class="dialog-footer" style="width: 100%">
             <el-button @click="showLogin" class="quxiao" round>取 消</el-button>
             <el-button type="primary" @click="showLogin" class="denglu" round>登 录</el-button>
+            <p style="text-align: center">
+                <a href="#" title="使用百度账号登录"class="logo icon iconfont icon-icon_baidulogo" style="font-size: xx-large"></a>
+                <a href="#" title="使用qq登录" class="logo icon iconfont icon-qqdenglu" style="font-size: xx-large"></a>
+            </p>
         </span>
     </el-dialog>
 </template>
@@ -47,11 +52,16 @@
         border-radius: 13px;
     }
 
+    /* 去除登录框的内边距 */
+    .el-dialog__body {
+        padding: 15px 1px;
+    }
+
     /* 输入框样式 */
     .el-dialog__body > span > .el-input > .el-input__inner {
         width: 75%;
         border-radius: 10px;
-        height: 60px;
+        height: 50px;
     }
 
     /* 隐藏关闭按钮 */
@@ -61,8 +71,14 @@
 
     /* 按钮样式 */
     .quxiao, .denglu {
-        width: 40%;
-        height: 50px;
+        width: 25%;
+        height: 40px;
+    }
+
+    /* 社交登录图标样式 */
+    .logo {
+        padding-left: 10px;
+        padding-right: 10px;
     }
 
     /* 按钮居中 */
