@@ -25,7 +25,7 @@
                 <el-menu-item index="/" v-navBarCss>首页</el-menu-item>
                 <el-menu-item v-for="item in navBar_menu" :index="item.index">{{item.name}}</el-menu-item>
                 <li class="login">
-                    <el-button type="success">注册</el-button>
+                    <a href="/create_account.html"><el-button type="success">注册</el-button></a>
                     <el-button type="primary" @click="loginVisible = !loginVisible">登录</el-button>
                 </li>
             </template>

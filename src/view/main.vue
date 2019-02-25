@@ -17,7 +17,9 @@
             </el-main>
 
             <!-- 尾部版权信息 -->
-            <el-footer><el-input v-model="input" placeholder="用户名 邮箱 手机号" minlength="3" autofocus="true"></el-input></el-footer>
+            <el-footer>
+                我是版权信息
+            </el-footer>
 
         </el-container>
     </div>
@@ -25,6 +27,7 @@
 
 <script>
     import navBar from './components/index/navBar.vue'
+
     export default {
         created() {
         },

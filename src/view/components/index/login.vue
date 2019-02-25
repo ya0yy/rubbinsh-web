@@ -17,8 +17,12 @@
             <el-button @click="showLogin" class="quxiao" round>取 消</el-button>
             <el-button type="primary" @click="showLogin" class="denglu" round>登 录</el-button>
             <p style="text-align: center">
-                <a href="#" title="使用百度账号登录"class="logo icon iconfont icon-icon_baidulogo" style="font-size: xx-large"></a>
-                <a href="#" title="使用qq登录" class="logo icon iconfont icon-qqdenglu" style="font-size: xx-large"></a>
+                <a href="#" title="使用百度账号登录" class="logo">
+                    <svg class="icon" aria-hidden="true" font-size="40px"><use xlink:href="#icon-icon_baidulogo"/></svg>
+                </a>
+                <a href="#" title="使用支付宝登录" class="logo">
+                    <svg class="icon" aria-hidden="true" font-size="40px"><use xlink:href="#icon-zhifubaorenzheng"/></svg>
+                </a>
             </p>
         </span>
     </el-dialog>
