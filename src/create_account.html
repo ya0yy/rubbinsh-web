@@ -3,18 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <title>嘻嘻嘻😁</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="http://at.alicdn.com/t/font_1024336_0yuzv70dcya.js" type="application/javascript"></script>
+    <style>
+        .icon {
+            width: 1em;
+            height: 1em;
+            vertical-align: -0.15em;
+            fill: currentColor;
+            overflow: hidden;
+        }
+        /* 社交登录图标样式 */
+        .logo {
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+    </style>
 </head>
 <body style="position: relative; min-height: 100%; margin:0px; padding: 0px; background-color: #0b4182;">
-<div style="position: absolute; top: -120px; left: 0px; width: 100%; min-height: 100%; background: linear-gradient(0deg, #0b4182 1%, #1e88e5 100%);">
-    <div class="loggedout_vcenter">
+<div style="position: absolute; top: -120px; left: 0px; width: 100%; min-height: 100%; ">
+    <div style="margin: 120px 0px;position: absolute;top: 50%;width: 100%; background: linear-gradient(0deg, #0b4182 1%, #1e88e5 100%);">
         <div style="padding: 8px;">
 
-            <div style="position:relative; min-height:420px; max-width: 420px; padding:40px; background-color:#ffffff; margin-left: auto; margin-right: auto; border-radius:4px; ">
-                <div id="register_header" class="textcenter">
-
+            <div style="position:relative; min-height:420px; max-width: 420px; padding:40px; background-color:#ffffff; margin-left: auto; margin-top: 1in; margin-right: auto; border-radius:15px; ">
+                <hr class="hr20"/>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">邮箱地址</label>
+                    <input type="email" class="form-control input-lg" id="exampleInputEmail1" placeholder="Email">
                 </div>
-
-
+                <div class="form-group">
+                    <label for="exampleInputPassword1">密码</label>
+                    <input type="password" class="form-control input-lg" id="exampleInputPassword1"
+                           placeholder="Password">
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox"> Check me out
+                    </label>
+                </div>
+                <button type="submit" class="btn btn-block btn-primary">注册</button>
+                <p style="text-align: center; margin-top: 50px">
+                    您还可以使用：
+                    <a href="#" title="使用百度账号登录" class="logo">
+                        <svg class="icon" aria-hidden="true" font-size="40px"><use xlink:href="#icon-icon_baidulogo"/></svg>
+                    </a>
+                    <a href="#" title="使用支付宝登录" class="logo">
+                        <svg class="icon" aria-hidden="true" font-size="40px"><use xlink:href="#icon-zhifubaorenzheng"/></svg>
+                    </a>
+                    登录
+                </p>
             </div>
         </div>
     </div>
