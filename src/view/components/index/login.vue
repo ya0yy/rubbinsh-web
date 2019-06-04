@@ -9,13 +9,13 @@
             <img src="../../../img/logo.png" alt="" width="50" style="margin-bottom: 50px"
                  v-if="$store.state.cliWidth > 768">
             <img src="../../../img/backgroud1-2.gif" alt="" width="300">
-            <el-input v-model="input" placeholder="用户名 邮箱 手机号" minlength="3" autofocus="true"></el-input>
+            <el-input v-model="username" placeholder="用户名 邮箱 手机号" minlength="3" autofocus="true"></el-input>
             <span style="height: 20px; display: block"></span>
-            <el-input v-model="input" placeholder="请输入密码" type="password" minlength="3"></el-input>
+            <el-input v-model="password" placeholder="请输入密码" type="password" minlength="3"></el-input>
         </span>
         <span slot="footer" class="dialog-footer" style="width: 100%">
             <el-button @click="showLogin" class="quxiao" round>取 消</el-button>
-            <el-button type="primary" @click="showLogin" class="denglu" round>登 录</el-button>
+            <el-button type="primary" @click="doLogin" class="denglu" round>登 录</el-button>
             <p style="text-align: center">
                 <a href="#" title="使用百度账号登录" class="logo">
                     <svg class="icon" aria-hidden="true" font-size="40px"><use xlink:href="#icon-icon_baidulogo"/></svg>
@@ -33,9 +33,20 @@
         mounted() {
         },
         data() {
-            return {}
+            return {
+                username : '',
+                password : ''
+            }
         },
         methods: {
+            // 登录
+            doLogin() {
+                this.$axios.post('http://localhost:10001/not_login', {
+                    username : this.username,
+                    password : this.password
+                });
+                // this.showLogin()
+            },
             // 调用父组件中的showLogin方法，修改登录框的显示标记
             showLogin() {
                 this.$emit('showLogin');

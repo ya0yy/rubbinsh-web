@@ -1,12 +1,13 @@
-import Vue from 'vue/dist/vue.min'
-import VueRouter from 'vue-router'
-import axios from 'axios/dist/axios'
-import qs from 'qs'
+import Vue from 'vue/dist/vue.min';
+import VueRouter from 'vue-router';
+import axios from 'axios/dist/axios';
+import qs from 'qs';
 import ElementUI from 'element-ui';
-import 'element-ui/lib/theme-chalk/index.css';
-import 'animate.css/animate.css'
-import main from './view/main.vue';
+import main from './view/page/main.vue';
 import Vuex from 'vuex/dist/vuex';
+import router from './router/router'
+import 'element-ui/lib/theme-chalk/index.css';
+import 'animate.css/animate.css';
 
 // 注册自定义全局组件
 Vue.prototype.$axios = axios;
@@ -17,22 +18,6 @@ Vue.use(ElementUI);
 Vue.use(VueRouter);
 Vue.use(Vuex);
 
-// 路由规则定义
-const router = new VueRouter({
-    routes: [
-        {path: '/', redirect: '/index'},
-        {path: "/index", component: () => import('./view/index.vue'), name: "index"},
-        {path: "/test", component: () => import('./view/router/test.vue'), name: "test"},
-        {path: "/user", component: () => import('./view/router/user.vue'), name: "user",
-            children: [
-                {path: 'profile', component: () => import('./view/router/user/profile.vue'), name: "user_profile"},
-                {path: 'favorite', component: () => import('./view/router/user/favorite.vue'), name: "user_favorite"},
-                {path: 'post', component: () => import('./view/router/user/post.vue'), name: "user_post"},
-                {path: 'security', component: () => import('./view/router/user/security.vue'), name: "user_security"},
-            ]
-        },
-    ]
-});
 
 // vuex
 const store = new Vuex.Store({

@@ -26,7 +26,7 @@
 </template>
 
 <script>
-    import navBar from './components/index/navBar.vue'
+    import navBar from '../components/index/navBar.vue'
 
     export default {
         created() {
@@ -42,7 +42,7 @@
 
     /*背景图*/
     #app {
-        background: url(../img/index_bg.png) no-repeat;
+        background: url(../../img/index_bg.png) no-repeat;
         background-color: #f8ffd2;
         height: 1202px;
     }

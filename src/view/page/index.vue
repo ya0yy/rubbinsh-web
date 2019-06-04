@@ -20,8 +20,8 @@
 
 <script>
     // 页面模块引入
-    import hotPost from './components/index/hotPost.vue'
-    import carousel from './components/index/carousel.vue'
+    import hotPost from '../components/index/hotPost.vue'
+    import carousel from '../components/index/carousel.vue'
 
     export default {
         created() {
