@@ -10,7 +10,7 @@
          @mouseleave.native：移除也换个颜色
          -->
         <el-menu
-                :mode="$store.state.cliWidth >= 768 ? 'horizontal' : 'vertical'"
+                :mode="$store.getters.getCliWidth >= 768 ? 'horizontal' : 'vertical'"
                 :default-active="activeIndex2"
                 class="el-menu-demo"
                 :background-color="embg ? 'black' : '#dabcbf'"
@@ -21,7 +21,7 @@
                 @mouseleave.native="embg=!embg"
         >
             <!-- 当浏览器宽度大于768时显示pc端导航栏 -->
-            <template v-if="$store.state.cliWidth > 768">
+            <template v-if="$store.getters.getCliWidth > 768">
                 <el-menu-item index="/" v-navBarCss>首页</el-menu-item>
                 <el-menu-item v-for="item in navBar_menu" :index="item.index">{{item.name}}</el-menu-item>
                 <li class="login">
@@ -31,7 +31,7 @@
             </template>
 
             <!-- 当浏览器宽度小于768时显示适配于移动端的导航栏 -->
-            <el-submenu index="2" v-if="$store.state.cliWidth <= 768">
+            <el-submenu index="2" v-if="$store.getters.getCliWidth <= 768">
                 <template slot="title">我的工作台</template>
                 <el-menu-item index="/">首页</el-menu-item>
                 <el-menu-item v-for="item in navBar_menu" :index="item.index">{{item.name}}</el-menu-item>

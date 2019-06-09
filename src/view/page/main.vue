@@ -42,8 +42,7 @@
 
     /*背景图*/
     #app {
-        background: url(../../img/index_bg.png) no-repeat;
-        background-color: #f8ffd2;
+        background: #f8ffd2 url(../../img/index_bg.png) no-repeat;
         height: 1202px;
     }
 

@@ -1,6 +1,5 @@
 import Vue from 'vue/dist/vue.min';
 import VueRouter from 'vue-router';
-import axios from 'axios/dist/axios';
 import qs from 'qs';
 import ElementUI from 'element-ui';
 import main from './view/page/main.vue';
@@ -10,7 +9,6 @@ import 'element-ui/lib/theme-chalk/index.css';
 import 'animate.css/animate.css';
 
 // 注册自定义全局组件
-Vue.prototype.$axios = axios;
 Vue.prototype.$qs = qs;
 
 // 注册组件
@@ -22,13 +20,21 @@ Vue.use(Vuex);
 // vuex
 const store = new Vuex.Store({
     state: {
-        count: 0,
         // 浏览器宽度
-        cliWidth: document.body.clientWidth
+        cliWidth: document.body.clientWidth,
+        user: {}
+    },
+    getters :{
+        getCliWidth: state => {
+            return state.cliWidth
+        }
     },
     mutations: {
-        increment(state) {
-            state.count++
+        setCliWidth: (state, width) => {
+            state.cliWidth = width
+        },
+        setUser: (state, user) => {
+            state.user = user
         }
     }
 })
@@ -37,11 +43,11 @@ new Vue({
     el: "#app",
     mounted() {
         // 监听浏览器大小变化，将宽度实时赋值给vuex的cliWidth
-        window.onresize = () => {
-            return (() => {
-                this.$store.state.cliWidth = document.body.clientWidth
-            })()
-        }
+        window.onresize =
+            () => {
+                this.$store.commit("setCliWidth", document.body.clientWidth);
+            }
+
     },
     created() {
         console.log("hello");
