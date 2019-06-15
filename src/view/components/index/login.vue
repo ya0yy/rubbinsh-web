@@ -16,7 +16,7 @@
         </span>
         <span slot="footer" class="dialog-footer" style="width: 100%">
             <el-button @click="showLogin" class="quxiao" round>取 消</el-button>
-            <el-button type="primary" @click="doLogin" class="denglu" round>登 录</el-button>
+            <el-button type="primary" @click="doLogin" class="denglu" round :loading="dl">登 录</el-button>
             <p style="text-align: center">
                 <a href="#" title="使用百度账号登录" class="logo">
                     <svg class="icon" aria-hidden="true" font-size="40px"><use xlink:href="#icon-icon_baidulogo"/></svg>
@@ -38,6 +38,7 @@
         },
         data() {
             return {
+                dl:false,
                 username: '',
                 password: '',
                 msg: ''
@@ -46,33 +47,26 @@
         methods: {
             // 登录
             doLogin() {
+                this.dl = true
                 let userApi = new UserApi();
                 // 获取授权码
                 userApi.getAuthorizeCode(this.username, this.password)
                     .then((response) => {
-                        try {
-                            // 转换失败说明登录成功（登录失败后台返回一个包含错误信息的json，成功则直接返回获取token的地址）
-                            let json = eval('(' + response.data + ')');
-                            this.msg = json.msg
-                        } catch (e) {
-                            // 如果上面将字符串转为json失败就回进入catch块
-                            // 获取token
-                            userApi.getToken(response.data).then(tokenResp => {
-                                if (tokenResp.data.status) {
-                                    this.showLogin()
-                                    this.$store.commit('setUser', {hello:'js'})
-                                    console.log(this.$store.state.user)
-                                } else {
-                                    this.msg = "错误"
-                                }
-                            }).catch(error => {
-                                console.error(error)
-                            })
-                        }
+                        // 获取token
+                        userApi.getToken(response.data).then(resp => {
+                            this.$store.commit('setUser', resp.data.data)
+                            this.showLogin()
+                        }).catch(error => {
+                            this.msg = "错误"
+                            console.error(error)
+                        })
 
                     })
                     .catch((error) => {
-                        console.error(error)
+                        let json = eval('(' + error.response.data + ')');
+                        // 显示错误信息
+                        this.msg = json.msg
+                        this.dl = false
                     });
             },
             // 调用父组件中的showLogin方法，修改登录框的显示标记

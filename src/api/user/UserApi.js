@@ -23,6 +23,11 @@ class UserApi {
     getToken(tokenUrl) {
         return axios.post(url + tokenUrl, {}, config())
     }
+
+    // 获取自己的信息
+    getMyInfo() {
+        return axios.get(url + "/user/my_info", config())
+    }
 }
 
 export default UserApi

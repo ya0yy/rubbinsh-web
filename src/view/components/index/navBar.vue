@@ -24,9 +24,13 @@
             <template v-if="$store.getters.getCliWidth > 768">
                 <el-menu-item index="/" v-navBarCss>首页</el-menu-item>
                 <el-menu-item v-for="item in navBar_menu" :index="item.index">{{item.name}}</el-menu-item>
-                <li class="login">
+                <li class="login" v-if="!$store.getters.getUser.uid">
                     <a href="/create_account.html"><el-button type="success">注册</el-button></a>
                     <el-button type="primary" @click="loginVisible = !loginVisible">登录</el-button>
+                </li>
+
+                <li class="login" v-if="$store.getters.getUser.uid">
+                    我已经登录了
                 </li>
             </template>
 
@@ -35,7 +39,7 @@
                 <template slot="title">我的工作台</template>
                 <el-menu-item index="/">首页</el-menu-item>
                 <el-menu-item v-for="item in navBar_menu" :index="item.index">{{item.name}}</el-menu-item>
-                <li class="el-menu-item" @click="loginVisible = !loginVisible">登录</li>
+                <li v-if="$store.getters.getUser.uid" class="el-menu-item" @click="loginVisible = !loginVisible">登录</li>
             </el-submenu>
 
         </el-menu>

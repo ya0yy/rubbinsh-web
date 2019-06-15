@@ -5,6 +5,8 @@ import ElementUI from 'element-ui';
 import main from './view/page/main.vue';
 import Vuex from 'vuex/dist/vuex';
 import router from './router/router'
+import UserApi from './api/user/UserApi'
+
 import 'element-ui/lib/theme-chalk/index.css';
 import 'animate.css/animate.css';
 
@@ -24,9 +26,12 @@ const store = new Vuex.Store({
         cliWidth: document.body.clientWidth,
         user: {}
     },
-    getters :{
+    getters: {
         getCliWidth: state => {
             return state.cliWidth
+        },
+        getUser: state => {
+            return state.user
         }
     },
     mutations: {
@@ -38,6 +43,8 @@ const store = new Vuex.Store({
         }
     }
 })
+
+let userApi = new UserApi()
 
 new Vue({
     el: "#app",
@@ -51,6 +58,11 @@ new Vue({
     },
     created() {
         console.log("hello");
+        userApi.getMyInfo().then(resp => {
+            // this.$store.commit('setUser', resp.data.data)
+        }).catch(error => {
+            console.log(error)
+        })
     },
     render: h => h(main),
     router,

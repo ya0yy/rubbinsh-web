@@ -25,13 +25,7 @@
 
     export default {
         created() {
-            /*this.$axios.post('http://localhost:8081', {'hello': 'k'})
-                .then((res) => {
-                    console.log(res);
-                })
-                .catch((error) => {
-                    console.log(error);
-                })*/
+
         },
         data() {
             return {}
