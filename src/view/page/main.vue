@@ -40,9 +40,9 @@
         text-align: center;
     }
 
-    /*背景图*/
+    /*背景图 #f8ffd2*/
     #app {
-        background: #f8ffd2 url(../../img/index_bg.png) no-repeat;
+        background: #FAF7EF url(../../img/index_bg.png) no-repeat;
         height: 1202px;
     }
 

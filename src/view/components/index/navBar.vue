@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="navDiv" :style="{'background-color' : embg}">
         <!--
          mode：导航栏的样式，这里设置如果是移动端就显示折叠样式，pc端显示顶部导航样式
          default-active：当前选中
@@ -11,18 +11,18 @@
          -->
         <el-menu
                 :mode="$store.getters.getCliWidth >= 768 ? 'horizontal' : 'vertical'"
-                :default-active="activeIndex2"
-                class="el-menu-demo"
-                :background-color="embg ? 'black' : '#dabcbf'"
+                :default-active="'/'"
+                :background-color="embg"
                 text-color="white"
                 active-text-color="#ffd04b"
                 router="true"
-                @mouseenter.native="embg=!embg"
-                @mouseleave.native="embg=!embg"
+                @mouseenter.native="embg=enterColor"
+                @mouseleave.native="embg=leaveColor"
+
         >
             <!-- 当浏览器宽度大于768时显示pc端导航栏 -->
             <template v-if="$store.getters.getCliWidth > 768">
-                <el-menu-item index="/" v-navBarCss>首页</el-menu-item>
+                <el-menu-item index="/">首页</el-menu-item>
                 <el-menu-item v-for="item in navBar_menu" :index="item.index">{{item.name}}</el-menu-item>
                 <li class="login" v-if="!$store.getters.getUser.uid">
                     <a href="/create_account.html"><el-button type="success">注册</el-button></a>
@@ -61,38 +61,64 @@
                     {index: {name: 'user'}, name: "个人中心"},
                 ],
                 // 导航栏的初始颜色
-                embg: false,
+                enterColor: 'black',
+                leaveColor: '#dabcbf',
+                embg: '',
+
                 loginVisible: false
             }
         },
         methods: {
         },
         directives: {
-            // 自定义指令，当pc版导航栏被创建时给设置下导航栏第一个元素的左外边距
+            // 自定义指令
             navBarCss: {
                 inserted: (el, xx, vnode) => {
-                    el.style.marginLeft = '100px'
+                    // todosomething
                 }
             }
         },
-        components: {login}
+        components: {login},
+        mounted() {
+            this.embg = this.leaveColor
+        }
     }
 </script>
 
 <style scoped>
+    /* 导航菜单居中 */
+    .el-menu--horizontal {
+        display: inline-block;
+    }
+
     /*导航圆角*/
     .el-menu, .el-submenu {
+        border-right: none;
         padding: 0 10px 0 10px;
         border-radius: 10px;
+    }
+
+    /* 导航菜单去除下边线 */
+    .el-menu.el-menu--horizontal {
+        border-bottom: none;
+    }
+
+    /*导航圆角*/
+    .navDiv {
+        border-bottom: solid 1px #e6e6e6;
+        width: 100%;
+        /*height: 61px;*/
+        padding: 0 10px 0 10px;
+        border-radius: 10px;
+        text-align: center;
     }
 
     /* 登录按钮组 */
     .login {
         border: none;
-        margin-right: 100px;
         text-align: center;
         line-height: 60px;
-        float: right;
+        float: left;
     }
 
 </style>
